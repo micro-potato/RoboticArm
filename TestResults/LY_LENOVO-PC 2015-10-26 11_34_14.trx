@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="e0140552-774c-4861-92cf-e3c1f6b592ee" name="LY@LENOVO-PC 2015-10-26 11:34:14" runUser="Lenovo-PC\LY" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="本地" id="2a3c8fd0-d08d-4f80-b7e2-51a2ee96eb7a">
+    <Description>这些设置为本地测试运行的默认测试设置。</Description>
+    <Deployment enabled="false" runDeploymentRoot="LY_LENOVO-PC 2015-10-26 11_34_14">
+      <DeploymentItem filename="E:\上海出差\KukaArm\MechanicalArm\UDPDLL\bin\Debug\UDPDLL.dll" />
+      <DeploymentItem filename="E:\上海出差\KukaArm\MechanicalArm\MechanicalArm\bin\Debug\MechanicalArm.exe" />
+      <DeploymentItem filename="E:\上海出差\KukaArm\MechanicalArm\SocketClientDLL\bin\Debug\ClientDLL.dll" />
+      <DeploymentItem filename="E:\上海出差\KukaArm\MechanicalArm\Helpers\bin\Debug\Helpers.dll" />
+      <DeploymentItem filename="E:\上海出差\KukaArm\MechanicalArm\ArmController\bin\Debug\ArmController.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2015-10-26T11:34:14.2664581+08:00" queuing="2015-10-26T11:34:14.3133317+08:00" start="2015-10-26T11:34:14.3289572+08:00" finish="2015-10-26T11:34:14.5728787+08:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="TestGetButtonState" storage="e:\上海出差\kukaarm\mechanicalarm\testproject1\bin\debug\testproject1.dll" id="3e02f7a7-3337-cfc2-2d05-458357997c83">
+      <Execution id="ad8cef7b-6b06-4b34-8683-26243d612de5" />
+      <TestMethod codeBase="E:/上海出差/KukaArm/MechanicalArm/TestProject1/bin/Debug/TestProject1.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.UnitTest1, TestProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestGetButtonState" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="列表中未列出的结果" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="所有已加载的结果" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="3e02f7a7-3337-cfc2-2d05-458357997c83" executionId="ad8cef7b-6b06-4b34-8683-26243d612de5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="ad8cef7b-6b06-4b34-8683-26243d612de5" testId="3e02f7a7-3337-cfc2-2d05-458357997c83" testName="TestGetButtonState" computerName="LENOVO-PC" duration="00:00:00.0206707" startTime="2015-10-26T11:34:14.3289572+08:00" endTime="2015-10-26T11:34:14.5498618+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ad8cef7b-6b06-4b34-8683-26243d612de5">
+    </UnitTestResult>
+  </Results>
+</TestRun>

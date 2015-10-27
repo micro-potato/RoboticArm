@@ -1,0 +1,17 @@
+E:\上海出差\KukaArm\MechanicalArm\TestProject1\bin\Release\TestProject1.dll
+E:\上海出差\KukaArm\MechanicalArm\TestProject1\bin\Release\TestProject1.pdb
+E:\上海出差\KukaArm\MechanicalArm\TestProject1\bin\Release\ArmController.dll
+E:\上海出差\KukaArm\MechanicalArm\TestProject1\bin\Release\Helpers.dll
+E:\上海出差\KukaArm\MechanicalArm\TestProject1\bin\Release\MechanicalArm.exe
+E:\上海出差\KukaArm\MechanicalArm\TestProject1\bin\Release\UDPDLL.dll
+E:\上海出差\KukaArm\MechanicalArm\TestProject1\bin\Release\ClientDLL.dll
+E:\上海出差\KukaArm\MechanicalArm\TestProject1\bin\Release\ArmController.pdb
+E:\上海出差\KukaArm\MechanicalArm\TestProject1\bin\Release\Helpers.pdb
+E:\上海出差\KukaArm\MechanicalArm\TestProject1\bin\Release\MechanicalArm.pdb
+E:\上海出差\KukaArm\MechanicalArm\TestProject1\bin\Release\UDPDLL.pdb
+E:\上海出差\KukaArm\MechanicalArm\TestProject1\bin\Release\ClientDLL.pdb
+E:\上海出差\KukaArm\MechanicalArm\TestProject1\bin\Release\MechanicalArm_Accessor.exe
+E:\上海出差\KukaArm\MechanicalArm\TestProject1\bin\Release\MechanicalArm_Accessor.pdb
+E:\上海出差\KukaArm\MechanicalArm\TestProject1\obj\Release\TestProject1.csprojResolveAssemblyReference.cache
+E:\上海出差\KukaArm\MechanicalArm\TestProject1\obj\Release\TestProject1.dll
+E:\上海出差\KukaArm\MechanicalArm\TestProject1\obj\Release\TestProject1.pdb

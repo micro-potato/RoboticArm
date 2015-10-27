@@ -1,0 +1,17 @@
+E:\上海出差\KukaArm\MechanicalArm\MechanicalArm\bin\Debug\MechanicalArm.exe
+E:\上海出差\KukaArm\MechanicalArm\MechanicalArm\bin\Debug\MechanicalArm.pdb
+E:\上海出差\KukaArm\MechanicalArm\MechanicalArm\bin\Debug\ArmController.dll
+E:\上海出差\KukaArm\MechanicalArm\MechanicalArm\bin\Debug\Helpers.dll
+E:\上海出差\KukaArm\MechanicalArm\MechanicalArm\bin\Debug\UDPDLL.dll
+E:\上海出差\KukaArm\MechanicalArm\MechanicalArm\bin\Debug\ClientDLL.dll
+E:\上海出差\KukaArm\MechanicalArm\MechanicalArm\bin\Debug\ArmController.pdb
+E:\上海出差\KukaArm\MechanicalArm\MechanicalArm\bin\Debug\Helpers.pdb
+E:\上海出差\KukaArm\MechanicalArm\MechanicalArm\bin\Debug\UDPDLL.pdb
+E:\上海出差\KukaArm\MechanicalArm\MechanicalArm\bin\Debug\ClientDLL.pdb
+E:\上海出差\KukaArm\MechanicalArm\MechanicalArm\obj\x86\Debug\MechanicalArm.csprojResolveAssemblyReference.cache
+E:\上海出差\KukaArm\MechanicalArm\MechanicalArm\obj\x86\Debug\MechanicalArm.CentralForm.resources
+E:\上海出差\KukaArm\MechanicalArm\MechanicalArm\obj\x86\Debug\MechanicalArm.Properties.Resources.resources
+E:\上海出差\KukaArm\MechanicalArm\MechanicalArm\obj\x86\Debug\MechanicalArm.csproj.GenerateResource.Cache
+E:\上海出差\KukaArm\MechanicalArm\MechanicalArm\obj\x86\Debug\MechanicalArm.exe
+E:\上海出差\KukaArm\MechanicalArm\MechanicalArm\obj\x86\Debug\MechanicalArm.pdb
+E:\上海出差\KukaArm\MechanicalArm\MechanicalArm\bin\Debug\MechanicalArm.exe.config
