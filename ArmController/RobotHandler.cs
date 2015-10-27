@@ -18,6 +18,8 @@ namespace ArmController
         double _A1k, _A2k, _A3k, _A4k, _A2DownMax, _Y2excludeY1k, _P2excludeP1k;
         private double[] _prevOffset = new double[6];
 
+        internal double[] LatestOffet { get { return _prevOffset; } }
+
         //Power
         SerialPortHelper _serialPortHelper;
         public RobotHandler(string ip, int port)
@@ -309,11 +311,9 @@ namespace ArmController
             }
         }
 
-        public void ReachtoObject(int reachType)//0 cancel,1 reach
+        internal void SetSendState(bool p)
         {
-            string msg = string.Format("<Reach>{0}</Reach>|", reachType);
-            asyncClient.Send(msg);
-            LogHelper.GetInstance().ShowMsg("send to IIWA:" + msg);
+            throw new NotImplementedException();
         }
     }
 }
