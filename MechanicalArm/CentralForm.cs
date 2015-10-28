@@ -17,6 +17,7 @@ namespace MechanicalArm
         private ArmHandler _armHandler;
         private delegate void deleString(string arg);
         private System.Timers.Timer _reachObjectTimer;
+        private int _reachTimerTicked = 0;
         private int _pressState = 0;
         public CentralForm()
         {
@@ -34,17 +35,50 @@ namespace MechanicalArm
 
         private void InitReachTimer()
         {
-            _reachObjectTimer = new System.Timers.Timer(5000);
-            _reachObjectTimer.Elapsed += new System.Timers.ElapsedEventHandler(ReachFinish);
+            _reachObjectTimer = new System.Timers.Timer(1000);
+            _reachObjectTimer.Elapsed += new System.Timers.ElapsedEventHandler(ReachTimerTicked);
         }
 
-        void ReachFinish(object sender, System.Timers.ElapsedEventArgs e)
+        void ReachTimerTicked(object sender, System.Timers.ElapsedEventArgs e)
         {
-            _reachObjectTimer.Stop();
-            _robotHandler.SetPower(_pressState);
-            _robotHandler.ReachtoObject(0);//release,make robot reflect to arm move
-            SetReflecttoArmMove(true);
+            if (_reachTimerTicked < 3)//wait for move
+            {
+                _reachTimerTicked++;
+            }
+            else if (_reachTimerTicked < 4)//notify power to Robot
+            {
+                _robotHandler.NotifyPower(_pressState);
+                _reachTimerTicked++;
+            }
+            else if (_reachTimerTicked < 6)//wait for move
+            {
+                _reachTimerTicked++;
+            }
+            else if (_reachTimerTicked == 6)//set power
+            {
+                _robotHandler.SetPower(_pressState);
+                _reachTimerTicked++;
+            }
+            else if (_reachTimerTicked < 8)//wait for hold or realese finish
+            {
+                _reachTimerTicked++;
+            }
+            else if (_reachTimerTicked == 8)//finish,give back control right to glove
+            {
+                _reachObjectTimer.Stop();
+                _robotHandler.ReachtoObject(0);
+                SetReflecttoArmMove(true);
+                _reachTimerTicked = 0;
+            }
         }
+
+        //void ReachFinish(object sender, System.Timers.ElapsedEventArgs e)
+        //{
+        //    _reachObjectTimer.Stop();
+        //    _robotHandler.SetPower(_pressState);
+        //    _robotHandler.ReachtoObject(0);//release,make robot reflect to arm move
+        //    SetReflecttoArmMove(true);
+        //}
 
         private void InitConfig()
         {
@@ -99,7 +133,7 @@ namespace MechanicalArm
         private void BeginReachtoObject()
         {
             SetReflecttoArmMove(false);
-            _robotHandler.ReachtoObject(1);
+            _robotHandler.ReachtoObject(1);//begin move
             _reachObjectTimer.Start();
         }
 

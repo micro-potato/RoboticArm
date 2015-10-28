@@ -3,12 +3,12 @@
 		   平放时roll2和pitch2接近0；逆时针roll2减小，顺时针roll2增大，逆时针yaw2减小，顺时针yaw2增大；抬起时pitch2增大，反之pictch2减小 -->
 <Data>
   <ComPort>COM4</ComPort>
-  <JointTimer>100</JointTimer>
+  <JointTimer>200</JointTimer>
   <A1k>0.75</A1k>
   <A2k>1.125</A2k>
   <Y2excludeY1k>1</Y2excludeY1k>
   <P2excludeP1k>1.125</P2excludeP1k>
   <A3k>1</A3k>
   <A4k>-1</A4k>
-  <A2DownMax>10</A2DownMax>
+  <A2DownMax>5</A2DownMax>
 </Data>

@@ -191,7 +191,7 @@ namespace ArmController
                 LogHelper.GetInstance().ShowMsg(string.Format("A3 from {0} to 0", offsetA3)); ;
             }
 
-            string datatoSend = string.Format("<A1>{0}</A1><A2>{1}</A2><A3>{2}</A3><A4>{3}</A4><A5>{4}</A5><A6>{5}</A6><A7>{6}</A7>|", offsetA1.ToString(), offsetP1.ToString(), "0", offsetA4, "0", "0", "0");
+            string datatoSend = string.Format("<A1>{0}</A1><A2>{1}</A2><A3>{2}</A3><A4>{3}</A4><A5>{4}</A5><A6>{5}</A6><A7>{6}</A7>|", offsetA1.ToString(), offsetA2.ToString(), "0", offsetA4, "0", "0", "0");
             asyncClient.Send(datatoSend);
             offsetData.CopyTo(_prevOffset,0);
             LogHelper.GetInstance().ShowMsg("send to IIWA:=============" + datatoSend + "\n");
@@ -272,8 +272,8 @@ namespace ArmController
         /// <returns></returns>
         private double CalcA4(double offsetP2excludP1, double offsetY2excludeY1, double _A4k)
         {
-            //double offsetLength = Math.Sqrt((Math.Pow(offsetY2excludeY1, 2) + Math.Pow(offsetP2excludP1, 2)));//移动距离
-            double offsetLength = Math.Abs(offsetY2excludeY1);//移动距离,只考虑小臂水平
+            double offsetLength = Math.Sqrt((Math.Pow(offsetY2excludeY1, 2) + Math.Pow(offsetP2excludP1, 2)));//移动距离
+            //double offsetLength = Math.Abs(offsetY2excludeY1);//移动距离,只考虑小臂水平
             //int dir = offsetY2excludeY1 >= 0 ? 1 : -1;
             int dir = offsetP2excludP1 >= 0 ? -1 : 1;
             return offsetLength * dir * _A4k;
@@ -292,6 +292,10 @@ namespace ArmController
             }
         }
         #endregion
+        public void NotifyPower(int powerType)
+        {
+            asyncClient.Send(string.Format("<Power>{0}</Power>|", powerType.ToString()));
+        }
 
         public void SetPower(int powerType)//0 off,1 on
         {
