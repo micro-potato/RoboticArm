@@ -4,3 +4,9 @@
 *.cache
 *.suo
 *.exe
+*.dll
+*.pdb
+*.cache
+*.cache
+*.exe
+*.xml
