@@ -9,14 +9,3 @@ E:\上海出差\KukaArm\MechanicalArm\ArmController\bin\Debug\UDPDLL.pdb
 E:\上海出差\KukaArm\MechanicalArm\ArmController\obj\Debug\ArmController.csprojResolveAssemblyReference.cache
 E:\上海出差\KukaArm\MechanicalArm\ArmController\obj\Debug\ArmController.dll
 E:\上海出差\KukaArm\MechanicalArm\ArmController\obj\Debug\ArmController.pdb
-E:\code\code2015\KukaArm\MechanicalArm\ArmController\bin\Debug\ArmController.dll
-E:\code\code2015\KukaArm\MechanicalArm\ArmController\bin\Debug\ArmController.pdb
-E:\code\code2015\KukaArm\MechanicalArm\ArmController\bin\Debug\ClientDLL.dll
-E:\code\code2015\KukaArm\MechanicalArm\ArmController\bin\Debug\Helpers.dll
-E:\code\code2015\KukaArm\MechanicalArm\ArmController\bin\Debug\UDPDLL.dll
-E:\code\code2015\KukaArm\MechanicalArm\ArmController\bin\Debug\Helpers.pdb
-E:\code\code2015\KukaArm\MechanicalArm\ArmController\bin\Debug\ClientDLL.pdb
-E:\code\code2015\KukaArm\MechanicalArm\ArmController\bin\Debug\UDPDLL.pdb
-E:\code\code2015\KukaArm\MechanicalArm\ArmController\obj\Debug\ArmController.csprojResolveAssemblyReference.cache
-E:\code\code2015\KukaArm\MechanicalArm\ArmController\obj\Debug\ArmController.dll
-E:\code\code2015\KukaArm\MechanicalArm\ArmController\obj\Debug\ArmController.pdb

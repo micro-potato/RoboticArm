@@ -21,7 +21,3 @@ E:\上海出差\KukaArm\MechanicalArm\UDPDLL\bin\Debug\UDPDLL.dll
 E:\上海出差\KukaArm\MechanicalArm\UDPDLL\bin\Debug\UDPDLL.pdb
 E:\上海出差\KukaArm\MechanicalArm\UDPDLL\obj\Debug\UDPDLL.dll
 E:\上海出差\KukaArm\MechanicalArm\UDPDLL\obj\Debug\UDPDLL.pdb
-E:\code\code2015\KukaArm\MechanicalArm\UDPDLL\bin\Debug\UDPDLL.dll
-E:\code\code2015\KukaArm\MechanicalArm\UDPDLL\bin\Debug\UDPDLL.pdb
-E:\code\code2015\KukaArm\MechanicalArm\UDPDLL\obj\Debug\UDPDLL.dll
-E:\code\code2015\KukaArm\MechanicalArm\UDPDLL\obj\Debug\UDPDLL.pdb

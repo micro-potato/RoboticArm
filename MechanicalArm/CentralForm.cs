@@ -16,8 +16,8 @@ namespace MechanicalArm
         private RobotHandler _robotHandler;
         private ArmHandler _armHandler;
         private delegate void deleString(string arg);
+        private System.Timers.Timer _reachObjectTimer;
         private int _pressState = 0;
-        private HanoiPlayer _hanoiPlayer;
         public CentralForm()
         {
             InitializeComponent();
@@ -27,13 +27,28 @@ namespace MechanicalArm
         {
             LogHelper.GetInstance().RegLog(this);
             InitConfig();
+            InitReachTimer();
             InitArmHandler();
             InitRobotController();
-            InitHanoiPlayer();
+        }
+
+        private void InitReachTimer()
+        {
+            _reachObjectTimer = new System.Timers.Timer(5000);
+            _reachObjectTimer.Elapsed += new System.Timers.ElapsedEventHandler(ReachFinish);
+        }
+
+        void ReachFinish(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            _reachObjectTimer.Stop();
+            _robotHandler.SetPower(_pressState);
+            _robotHandler.ReachtoObject(0);//release,make robot reflect to arm move
+            SetReflecttoArmMove(true);
         }
 
         private void InitConfig()
         {
+            //mConfig = new ConfigDeal().GetMessage();
             ConfigHelper.GetInstance().ResolveConfig(System.Windows.Forms.Application.StartupPath + @"\config.xml");
         }
 
@@ -59,26 +74,13 @@ namespace MechanicalArm
                 LogHelper.GetInstance().ShowMsg("Button Released");
             else if(_pressState==1)
                 LogHelper.GetInstance().ShowMsg("Button Pressed");
-            ReachtoHanoi();
-        }
-
-        private void ReachtoHanoi()
-        {
-            if (_pressState == 0)
-                _hanoiPlayer.DealHanoi(HanoiPlayer.MoveType.Relese);
-            else if (_pressState == 1)
-                _hanoiPlayer.DealHanoi(HanoiPlayer.MoveType.Hold);
+            BeginReachtoObject();
         }
 
         void OnOffsetUpdated(double[] offsetData)
         {
             LogHelper.GetInstance().ShowMsg("Move offset-----------------------------------------" + string.Join("|",offsetData));
             _robotHandler.MoveArm(offsetData);
-        }
-
-        private void InitHanoiPlayer()
-        {
-            _hanoiPlayer = new HanoiPlayer(_robotHandler);
         }
 
         #region raw data from glove
@@ -93,6 +95,39 @@ namespace MechanicalArm
             //_armHandler.Move(data);
         }
         #endregion
+
+        private void BeginReachtoObject()
+        {
+            SetReflecttoArmMove(false);
+            _robotHandler.ReachtoObject(1);
+            _reachObjectTimer.Start();
+        }
+
+        private void SetReflecttoArmMove(bool isReflecttoArmMove)
+        {
+            if (!isReflecttoArmMove)
+            {
+                try
+                {
+                    _armHandler.OffsetUpdated -= new ArmHandler.DeleOffsetUpdated(OnOffsetUpdated);
+                }
+                catch(Exception e)
+                {
+                    throw new Exception(e.Message);
+                }
+            }
+            else
+            {
+                try
+                {
+                    _armHandler.OffsetUpdated += new ArmHandler.DeleOffsetUpdated(OnOffsetUpdated);
+                }
+                catch (Exception e)
+                {
+                    throw new Exception(e.Message);
+                }
+            }
+        }
 
         /// <summary>
         /// 开始获取手套数据，操作机械臂
@@ -135,19 +170,21 @@ namespace MechanicalArm
 
         private void PressDown_Click(object sender, EventArgs e)
         {
-            ReachtoHanoi();
+            _pressState = 1;
+            BeginReachtoObject();
         }
 
         private void PressUp_Click(object sender, EventArgs e)
         {
-            ReachtoHanoi();
+            _pressState = 0;
+            BeginReachtoObject();
         }
 
         private void Reach_Click(object sender, EventArgs e)
         {
             try
             {
-                
+                _robotHandler.ReachtoObject(1);
             }
             catch (Exception ex)
             {

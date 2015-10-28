@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HanoiPlayer.cs" />
     <Compile Include="RobotHandler.cs" />
     <Compile Include="ArmHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
