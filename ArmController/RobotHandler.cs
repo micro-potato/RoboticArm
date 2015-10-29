@@ -132,8 +132,8 @@ namespace ArmController
         /// <param name="offsetData">距离基准的偏移</param>
         public void MoveArm(double[] offsetData)
         {
-            if (!ArmMoved(offsetData))
-                return;
+            //if (!ArmMoved(offsetData))
+            //    return;
 
             var correctedOffsetY1 = CalcYaw(offsetData[2], 1);//avoid offset larger than 180
             double offsetA1 = correctedOffsetY1 * _A1k;//big arm H value
@@ -145,16 +145,15 @@ namespace ArmController
             var correctedOffsetY2 = CalcYaw(offsetData[5], 1);//avoid offset larger than 180
             var correctedOffsetY2excludeY1 = CalcYaw((correctedOffsetY2 + correctedOffsetY1) * _Y2excludeY1k, 1);//y2独立于y1的偏移量
 
-            LogHelper.GetInstance().ShowMsg("Y2独立偏移量：=============" + correctedOffsetY2excludeY1.ToString());
+            //LogHelper.GetInstance().ShowMsg("Y2独立偏移量：=============" + correctedOffsetY2excludeY1.ToString());
             double offsetA4 = CalcA4(correctedOffsetY2excludeY1, _A4k);
-            LogHelper.GetInstance().ShowMsg("A4移动：=============" + offsetA4);
-            double offsetA3 = 0;
-            LogHelper.GetInstance().ShowMsg("小臂夹角：=============" + offsetA3);
+            //LogHelper.GetInstance().ShowMsg("A4移动：=============" + offsetA4);
+            //LogHelper.GetInstance().ShowMsg("小臂夹角：=============" + offsetA3);
 
             //处理越界,机械臂最大移动范围
-            offsetA1 = SetBoundary(offsetA1, 170);
-            offsetA2 = SetBoundary(offsetA2, 120);
-            offsetA4 = SetBoundary(offsetA4, 120);
+            //offsetA1 = SetBoundary(offsetA1, 170);
+            //offsetA2 = SetBoundary(offsetA2, 120);
+            //offsetA4 = SetBoundary(offsetA4, 120);
             if (offsetA2 > _A2DownMax)//A2下移
             {
                 offsetA2 = _A2DownMax;
@@ -162,8 +161,8 @@ namespace ArmController
 
             string datatoSend = string.Format("<A1>{0}</A1><A2>{1}</A2><A3>{2}</A3><A4>{3}</A4><A5>{4}</A5><A6>{5}</A6><A7>{6}</A7>|", offsetA1.ToString(), offsetA2.ToString(), "0", offsetA4, "0", "0", "0");
             asyncClient.Send(datatoSend);
-            offsetData.CopyTo(_prevOffset, 0);
-            LogHelper.GetInstance().ShowMsg("send to IIWA:=============" + datatoSend + "\n");
+            //offsetData.CopyTo(_prevOffset, 0);
+            //LogHelper.GetInstance().ShowMsg("send to IIWA:=============" + datatoSend + "\n");
         }
 
         private double SetBoundary(double currentValue, int maxValue)
@@ -180,8 +179,8 @@ namespace ArmController
             var bigArmOffsetH = Math.Abs(offsetData[2] - _prevOffset[2]);
             var smallArmOffset = Math.Abs(offsetData[5] - _prevOffset[5]);
             var bigArmOffsetV = Math.Abs(offsetData[1] - _prevOffset[1]);
-            LogHelper.GetInstance().ShowMsg(string.Format("距上次移动了Y1:{0},Y2:{1},P1:{2}", bigArmOffsetH.ToString(), smallArmOffset.ToString(), bigArmOffsetV.ToString()));
-            if (bigArmOffsetH < 2 && smallArmOffset < 2 && bigArmOffsetV < 2)
+            //LogHelper.GetInstance().ShowMsg(string.Format("距上次移动了Y1:{0},Y2:{1},P1:{2}", bigArmOffsetH.ToString(), smallArmOffset.ToString(), bigArmOffsetV.ToString()));
+            if (bigArmOffsetH < 3 && smallArmOffset < 3 && bigArmOffsetV < 3)
             {
                 return false;
             }
@@ -233,7 +232,6 @@ namespace ArmController
         {
             double offsetLength = Math.Abs(offsetY2excludeY1);//移动距离,只考虑小臂水平
             int dir = offsetY2excludeY1 >= 0 ? 1 : -1;
-            //int dir = offsetP2excludP1 >= 0 ? -1 : 1;
             return offsetLength * dir * _A4k;
         }
 

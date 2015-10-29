@@ -112,7 +112,7 @@ namespace ArmController
                 _latestData = ResolveCoordinates(_latestDataString);
             if (_isAdjusted)
             {
-                //UpdateButton();
+                UpdateButton();
                 CalcOffset();
                 NotifyOffset();
             }
