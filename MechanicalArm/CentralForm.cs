@@ -19,6 +19,11 @@ namespace MechanicalArm
         private System.Timers.Timer _reachObjectTimer;
         private int _reachTimerTicked = 0;
         private int _pressState = 0;
+
+        //moving hanoi
+        int _reachedTime = 3;
+        int _powerSettedTime = 6;
+        int _carryFinishedTime = 8;
         public CentralForm()
         {
             InitializeComponent();
@@ -31,6 +36,14 @@ namespace MechanicalArm
             InitReachTimer();
             InitArmHandler();
             InitRobotController();
+            InitHanoiTime();
+        }
+
+        private void InitHanoiTime()
+        {
+            _reachedTime = ConfigHelper.GetInstance().ReachedTime;
+            _powerSettedTime = ConfigHelper.GetInstance().PowerSettedTime;
+            _carryFinishedTime = ConfigHelper.GetInstance().CarryFinishedTime;
         }
 
         private void InitReachTimer()
@@ -39,50 +52,47 @@ namespace MechanicalArm
             _reachObjectTimer.Elapsed += new System.Timers.ElapsedEventHandler(ReachTimerTicked);
         }
 
+        /// <summary>
+        /// 抓取过程计时
+        /// </summary>
         void ReachTimerTicked(object sender, System.Timers.ElapsedEventArgs e)
         {
-            if (_reachTimerTicked < 3)//wait for move
+            if (_reachTimerTicked < _reachedTime)//wait for move
             {
                 _reachTimerTicked++;
             }
-            else if (_reachTimerTicked < 4)//notify power to Robot
+            else if (_reachTimerTicked == _reachedTime+1)//notify power to Robot
             {
                 _robotHandler.NotifyPower(_pressState);
                 _reachTimerTicked++;
+                LogHelper.GetInstance().ShowMsg("通知机械臂下移，等待下移完成。。。");
             }
-            else if (_reachTimerTicked < 6)//wait for move
+            else if (_reachTimerTicked < _powerSettedTime)//wait for set power
             {
                 _reachTimerTicked++;
             }
-            else if (_reachTimerTicked == 6)//set power
+            else if (_reachTimerTicked == _powerSettedTime)//set power
             {
                 _robotHandler.SetPower(_pressState);
                 _reachTimerTicked++;
+                LogHelper.GetInstance().ShowMsg("变更电磁铁状态，等待抓取/放置完成。。。");
             }
-            else if (_reachTimerTicked < 8)//wait for hold or realese finish
+            else if (_reachTimerTicked < _carryFinishedTime)//wait for hold or realese finish
             {
                 _reachTimerTicked++;
             }
-            else if (_reachTimerTicked == 8)//finish,give back control right to glove
+            else if (_reachTimerTicked == _carryFinishedTime)//finish,give back control right to glove
             {
                 _reachObjectTimer.Stop();
                 _robotHandler.ReachtoObject(0);
                 SetReflecttoArmMove(true);
                 _reachTimerTicked = 0;
+                LogHelper.GetInstance().ShowMsg("抓取/放置完成，将机械臂移动控制权交还手套。。。");
             }
         }
 
-        //void ReachFinish(object sender, System.Timers.ElapsedEventArgs e)
-        //{
-        //    _reachObjectTimer.Stop();
-        //    _robotHandler.SetPower(_pressState);
-        //    _robotHandler.ReachtoObject(0);//release,make robot reflect to arm move
-        //    SetReflecttoArmMove(true);
-        //}
-
         private void InitConfig()
         {
-            //mConfig = new ConfigDeal().GetMessage();
             ConfigHelper.GetInstance().ResolveConfig(System.Windows.Forms.Application.StartupPath + @"\config.xml");
         }
 
@@ -113,7 +123,7 @@ namespace MechanicalArm
 
         void OnOffsetUpdated(double[] offsetData)
         {
-            LogHelper.GetInstance().ShowMsg("Move offset-----------------------------------------" + string.Join("|",offsetData));
+            //LogHelper.GetInstance().ShowMsg("Move offset-----------------------------------------" + string.Join("|",offsetData));
             _robotHandler.MoveArm(offsetData);
         }
 
@@ -135,6 +145,7 @@ namespace MechanicalArm
             SetReflecttoArmMove(false);
             _robotHandler.ReachtoObject(1);//begin move
             _reachObjectTimer.Start();
+            LogHelper.GetInstance().ShowMsg("通知机械臂移动到最近点上方。。。");
         }
 
         private void SetReflecttoArmMove(bool isReflecttoArmMove)

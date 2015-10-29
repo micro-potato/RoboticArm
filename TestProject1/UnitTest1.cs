@@ -96,16 +96,19 @@ namespace TestProject1
         [TestMethod]
         public void TestConfig()
         {
-            ConfigHelper.GetInstance().ResolveConfig(@"E:\上海出差\KukaArm\MechanicalArm\MechanicalArm\bin\Debug\config.xml");
-            Assert.AreEqual(30, ConfigHelper.GetInstance().JointTimer);
-            Assert.AreEqual(0.75, ConfigHelper.GetInstance().A1k);
-            Assert.AreEqual(1.125, ConfigHelper.GetInstance().A2k);
-            Assert.AreEqual(1, ConfigHelper.GetInstance().A3k);
-            Assert.AreEqual(-1, ConfigHelper.GetInstance().A4k);
-            Assert.AreEqual(10, ConfigHelper.GetInstance().A2DownMax);
-            Assert.AreEqual(1, ConfigHelper.GetInstance().Y2excludeY1k);
-            Assert.AreEqual(1.125, ConfigHelper.GetInstance().P2excludeP1k);
-            Assert.AreEqual("COM4", ConfigHelper.GetInstance().ComPort);
+            ConfigHelper.GetInstance().ResolveConfig(@"E:\code\code2015\KukaArm\MechanicalArm\MechanicalArm\bin\Debug\config.xml");
+            //Assert.AreEqual(30, ConfigHelper.GetInstance().JointTimer);
+            //Assert.AreEqual(0.75, ConfigHelper.GetInstance().A1k);
+            //Assert.AreEqual(1.125, ConfigHelper.GetInstance().A2k);
+            //Assert.AreEqual(1, ConfigHelper.GetInstance().A3k);
+            //Assert.AreEqual(-1, ConfigHelper.GetInstance().A4k);
+            //Assert.AreEqual(10, ConfigHelper.GetInstance().A2DownMax);
+            //Assert.AreEqual(1, ConfigHelper.GetInstance().Y2excludeY1k);
+            //Assert.AreEqual(1.125, ConfigHelper.GetInstance().P2excludeP1k);
+            //Assert.AreEqual("COM4", ConfigHelper.GetInstance().ComPort);
+            Assert.AreEqual(3, ConfigHelper.GetInstance().ReachedTime);
+            Assert.AreEqual(6, ConfigHelper.GetInstance().PowerSettedTime);
+            Assert.AreEqual(8, ConfigHelper.GetInstance().CarryFinishedTime);
         }
 
         [TestMethod]

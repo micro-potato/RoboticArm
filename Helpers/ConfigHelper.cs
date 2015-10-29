@@ -17,7 +17,9 @@ namespace Helpers
         public double A2DownMax { get; set; }
         public double Y2excludeY1k { get; set; }
         public double P2excludeP1k { get; set; }
-
+        public int ReachedTime { get; set; }
+        public int PowerSettedTime { get; set; }
+        public int CarryFinishedTime { get; set; }
         
 
         private static ConfigHelper _configHelper;
@@ -48,6 +50,9 @@ namespace Helpers
             this.Y2excludeY1k = Convert.ToDouble(xmlDocument.SelectSingleNode("Data/Y2excludeY1k").InnerText);
             this.P2excludeP1k = Convert.ToDouble(xmlDocument.SelectSingleNode("Data/P2excludeP1k").InnerText);
             this.ComPort = xmlDocument.SelectSingleNode("Data/ComPort").InnerText;
+            this.ReachedTime = Convert.ToInt32(xmlDocument.SelectSingleNode("Data/ReachedTime").InnerText);
+            this.PowerSettedTime = Convert.ToInt32(xmlDocument.SelectSingleNode("Data/PowerSettedTime").InnerText);
+            this.CarryFinishedTime = Convert.ToInt32(xmlDocument.SelectSingleNode("Data/CarryFinishedTime").InnerText);
         }
     }
 }

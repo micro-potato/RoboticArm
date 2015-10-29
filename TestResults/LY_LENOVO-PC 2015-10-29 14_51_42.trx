@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="32efd19a-69b1-4d15-92a1-e742571b0bd5" name="LY@LENOVO-PC 2015-10-29 14:51:42" runUser="Lenovo-PC\LY" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="本地" id="2a3c8fd0-d08d-4f80-b7e2-51a2ee96eb7a">
+    <Description>这些设置为本地测试运行的默认测试设置。</Description>
+    <Deployment enabled="false" runDeploymentRoot="LY_LENOVO-PC 2015-10-29 14_51_42">
+      <DeploymentItem filename="E:\code\code2015\KukaArm\MechanicalArm\UDPDLL\bin\Debug\UDPDLL.dll" />
+      <DeploymentItem filename="E:\code\code2015\KukaArm\MechanicalArm\MechanicalArm\bin\Debug\MechanicalArm.exe" />
+      <DeploymentItem filename="E:\code\code2015\KukaArm\MechanicalArm\Helpers\bin\Debug\Helpers.dll" />
+      <DeploymentItem filename="E:\code\code2015\KukaArm\MechanicalArm\SocketClientDLL\bin\Debug\ClientDLL.dll" />
+      <DeploymentItem filename="E:\code\code2015\KukaArm\MechanicalArm\ArmController\bin\Debug\ArmController.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2015-10-29T14:51:42.0888118+08:00" queuing="2015-10-29T14:51:43.4825623+08:00" start="2015-10-29T14:51:43.5294210+08:00" finish="2015-10-29T14:51:44.0138039+08:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="TestConfig" storage="e:\code\code2015\kukaarm\mechanicalarm\testproject1\bin\debug\testproject1.dll" id="76c965a2-b227-232b-0638-2a5825525aa9">
+      <Execution id="dea21a8f-0d37-49d5-9d64-18eb949e0f71" />
+      <TestMethod codeBase="E:/code/code2015/KukaArm/MechanicalArm/TestProject1/bin/Debug/TestProject1.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.UnitTest1, TestProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestConfig" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="列表中未列出的结果" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="所有已加载的结果" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="76c965a2-b227-232b-0638-2a5825525aa9" executionId="dea21a8f-0d37-49d5-9d64-18eb949e0f71" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="dea21a8f-0d37-49d5-9d64-18eb949e0f71" testId="76c965a2-b227-232b-0638-2a5825525aa9" testName="TestConfig" computerName="LENOVO-PC" duration="00:00:00.0633468" startTime="2015-10-29T14:51:43.6231727+08:00" endTime="2015-10-29T14:51:43.9669261+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="dea21a8f-0d37-49d5-9d64-18eb949e0f71">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual 失败。应为: &lt;3&gt;，实际为: &lt;0&gt;。</Message>
+          <StackTrace>   在 TestProject1.UnitTest1.TestConfig() 位置 E:\code\code2015\KukaArm\MechanicalArm\TestProject1\UnitTest1.cs:行号 109
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>
