@@ -151,9 +151,9 @@ namespace ArmController
             //LogHelper.GetInstance().ShowMsg("小臂夹角：=============" + offsetA3);
 
             //处理越界,机械臂最大移动范围
-            //offsetA1 = SetBoundary(offsetA1, 170);
-            //offsetA2 = SetBoundary(offsetA2, 120);
-            //offsetA4 = SetBoundary(offsetA4, 120);
+            offsetA1 = SetBoundary(offsetA1, 170);
+            offsetA2 = SetBoundary(offsetA2, 120);
+            offsetA4 = SetBoundary(offsetA4, 120);
             if (offsetA2 > _A2DownMax)//A2下移
             {
                 offsetA2 = _A2DownMax;
