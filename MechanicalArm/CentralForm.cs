@@ -16,14 +16,15 @@ namespace MechanicalArm
         private RobotHandler _robotHandler;
         private ArmHandler _armHandler;
         private delegate void deleString(string arg);
+        
+        //moving hanoi
         private System.Timers.Timer _reachObjectTimer;
         private int _reachTimerTicked = 0;
-        private int _pressState = 0;
-
-        //moving hanoi
+        private int _currentPressState = 0;
         int _reachedTime = 3;
         int _powerSettedTime = 6;
         int _carryFinishedTime = 8;
+        bool _isMovingHanio = false;
         public CentralForm()
         {
             InitializeComponent();
@@ -63,7 +64,7 @@ namespace MechanicalArm
             }
             else if (_reachTimerTicked == _reachedTime+1)//notify power to Robot
             {
-                _robotHandler.NotifyPower(_pressState);
+                _robotHandler.NotifyPower(_currentPressState);
                 _reachTimerTicked++;
                 LogHelper.GetInstance().ShowMsg("通知机械臂下移，等待下移完成。。。");
             }
@@ -73,7 +74,7 @@ namespace MechanicalArm
             }
             else if (_reachTimerTicked == _powerSettedTime)//set power
             {
-                _robotHandler.SetPower(_pressState);
+                _robotHandler.SetPower(_currentPressState);
                 _reachTimerTicked++;
                 LogHelper.GetInstance().ShowMsg("变更电磁铁状态，等待抓取/放置完成。。。");
             }
@@ -87,6 +88,7 @@ namespace MechanicalArm
                 _robotHandler.ReachtoObject(0);
                 SetReflecttoArmMove(true);
                 _reachTimerTicked = 0;
+                _isMovingHanio = false;
                 LogHelper.GetInstance().ShowMsg("抓取/放置完成，将机械臂移动控制权交还手套。。。");
             }
         }
@@ -110,13 +112,17 @@ namespace MechanicalArm
             //_jointHandler.DataIn += new JointHandler.GetData(Joint_DataIn);
         }
 
-        void OnButtonStateUpdated(int currentState)
+        void OnButtonStateUpdated(int contraryTargetState)
         {
-            currentState = (currentState - 1) * -1;
-            _pressState = currentState;
-            if (_pressState == 0)
+            var targetState = (contraryTargetState - 1) * -1;
+            if (_isMovingHanio)
+                return;
+            if (targetState == _currentPressState)
+                return;
+            _currentPressState = targetState;
+            if (_currentPressState == 0)
                 LogHelper.GetInstance().ShowMsg("Button Released");
-            else if(_pressState==1)
+            else if(_currentPressState==1)
                 LogHelper.GetInstance().ShowMsg("Button Pressed");
             BeginReachtoObject();
         }
@@ -142,6 +148,7 @@ namespace MechanicalArm
 
         private void BeginReachtoObject()
         {
+            _isMovingHanio = true;
             SetReflecttoArmMove(false);
             _robotHandler.ReachtoObject(1);//begin move
             _reachObjectTimer.Start();
@@ -215,14 +222,12 @@ namespace MechanicalArm
 
         private void PressDown_Click(object sender, EventArgs e)
         {
-            _pressState = 1;
-            BeginReachtoObject();
+            OnButtonStateUpdated(0);
         }
 
         private void PressUp_Click(object sender, EventArgs e)
         {
-            _pressState = 0;
-            BeginReachtoObject();
+            OnButtonStateUpdated(1);
         }
 
         private void Reach_Click(object sender, EventArgs e)
